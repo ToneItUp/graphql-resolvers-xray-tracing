@@ -23,7 +23,7 @@ const tracer = function (resolver, parent, args, ctx, info) {
     // When AWS_XRAY_CONTEXT_MISSING is set to LOG_MISSING and no context was
     // found, then the subsegment will be null and nothing should be done
     if (subsegment) {
-      if(info.operation.name.value){
+      if(info && info.operation && info.operation.name && info.operation.name.value){
         subsegment.addAnnotation("operationName", info.operation.name.value)
       }
 
